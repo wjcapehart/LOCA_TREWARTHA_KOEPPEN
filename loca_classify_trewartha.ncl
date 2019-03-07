@@ -159,7 +159,7 @@ begin
    n_ens              = dimsizes(ensemble)
    n_scen             = dimsizes(scenario)
 
-   trewartha_code                           = new((/ n_time, n_ens, n_scen, n_lat, n_lon /), integer)
+   trewartha_code                           = new((/ n_time, n_ens, n_scen, n_lat, n_lon /), "integer")
    trewartha_code!0                         = "time"
    trewartha_code&time                      =  time
    trewartha_code!1                         = "ensemble"
