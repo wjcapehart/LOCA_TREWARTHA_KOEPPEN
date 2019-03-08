@@ -180,6 +180,7 @@ begin
 
 
    do t = 0, n_time-1
+     print("processing "+year_start(t))
      do e = 0, n_ens-1
 
        do j = 0, n_lat-1
@@ -193,13 +194,17 @@ begin
          end if
 
          do i = 0, n_lon-1
+            if (.not.ismissing(temp_rcp45(0,i))) then
              trewartha_code(t,e,0,j,i) = wjc_trewartha_func(temp_rcp45(:,i), \
                                                             prec_rcp45(:,i), \
                                                             lat(j))
-           if (year_start(t) .gt. 2005) then
-             trewartha_code(t,e,1,j,i) = wjc_trewartha_func(temp_rcp85(:,i), \
-                                                            prec_rcp85(:,i), \
-                                                            lat(j))
+              if (year_start(t) .gt. 2005) then
+                trewartha_code(t,e,1,j,i) = wjc_trewartha_func(temp_rcp85(:,i), \
+                                                              prec_rcp85(:,i), \
+                                                              lat(j))
+              end if
+
+              ; sprint(year_start(t)+" "+lon(i)+" "+lat(j)+" : "+trewartha_string(trewartha_code(t,e,0,j,i))+" "+trewartha_code(t,e,1,j,i))
            end if
 
          end do
