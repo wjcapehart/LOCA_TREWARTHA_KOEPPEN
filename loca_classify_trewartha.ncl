@@ -184,20 +184,20 @@ begin
 
        do j = 0, n_lat-1
 
-         prec_rcp45 = f_prec->pr_running_avg(t,:,e,0,j,:)
+         prec_rcp45 = f_prec->pr_running_avg(    t,:,e,0,j,:)
          temp_rcp45 = f_temp->tasavg_running_avg(t,:,e,0,j,:)
 
          if (year_start(t) .gt. 2005) then
-            prec_rcp85 = f_prec->pr_running_avg(t,:,e,1,j,:)
+            prec_rcp85 = f_prec->pr_running_avg(    t,:,e,1,j,:)
             temp_rcp85 = f_temp->tasavg_running_avg(t,:,e,1,j,:)
          end if
 
          do i = 0, n_lon-1
-             trewartha_code(t,e,0,i,j) = wjc_trewartha_func(temp_rcp45(:,i), \
+             trewartha_code(t,e,0,j,i) = wjc_trewartha_func(temp_rcp45(:,i), \
                                                             prec_rcp45(:,i), \
                                                             lat(j))
            if (year_start(t) .gt. 2005) then
-             trewartha_code(t,e,1,i,j) = wjc_trewartha_func(temp_rcp85(:,i), \
+             trewartha_code(t,e,1,j,i) = wjc_trewartha_func(temp_rcp85(:,i), \
                                                             prec_rcp85(:,i), \
                                                             lat(j))
            end if
