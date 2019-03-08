@@ -196,7 +196,7 @@ begin
              trewartha_code(t,e,0,i,j) = wjc_trewartha_func(temp_rcp45(:,i), \
                                                             prec_rcp45(:,i), \
                                                             lat(j))
-           if (year_start .gt. 2005) then
+           if (year_start(t) .gt. 2005) then
              trewartha_code(t,e,1,i,j) = wjc_trewartha_func(temp_rcp85(:,i), \
                                                             prec_rcp85(:,i), \
                                                             lat(j))
