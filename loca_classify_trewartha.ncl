@@ -187,7 +187,7 @@ begin
          prec_rcp45 = f_prec->pr_running_avg(t,:,e,0,j,:)
          temp_rcp45 = f_temp->tasavg_running_avg(t,:,e,0,j,:)
 
-         if (year_start .gt. 2005) then
+         if (year_start(t) .gt. 2005) then
             prec_rcp85 = f_prec->pr_running_avg(t,:,e,1,j,:)
             temp_rcp85 = f_temp->tasavg_running_avg(t,:,e,1,j,:)
          end if
