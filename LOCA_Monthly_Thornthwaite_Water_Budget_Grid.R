@@ -405,6 +405,7 @@ remove(agg)
 
 
 URL_Name = "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/CLASS_Examples/NGP_US_AWC.nc"
+URL_Name = "/projects/THREDDS/local_academic_repo//CLASS_Examples/NGP_US_AWC.nc"
 
   ncf = nc_open(filename = URL_Name)
 
