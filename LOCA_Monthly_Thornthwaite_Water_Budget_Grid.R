@@ -4,7 +4,6 @@
 # Libaries
 
   library(package = "tidyverse")
-  library(package = "tidypredict")
 
   library(package = "lubridate") # processing dates and time
   library(package = "stringr")
@@ -14,7 +13,6 @@
   library(package = "extRemes")  # extreme data analysis
   library(package = "abind")
 
-  library(package = "tidync")
   library(package = "ncdf4")
 
   library(package = "PCICt")
