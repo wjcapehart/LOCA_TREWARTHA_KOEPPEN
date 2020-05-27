@@ -44,7 +44,8 @@ lat         =  ncvar_get(nc    = ncngp,
 
 ensemble    = ncvar_get(nc    = ncngp,
                         varid = "ensemble")
-
+scenario    = ncvar_get(nc    = ncngp,
+                        varid = "scenario")
 year_start    = ncvar_get(nc    = ncngp,
                           varid = "year_start")
 
@@ -69,7 +70,7 @@ classes_table = ncvar_get(nc    = ncngp,
 
 class2L_cols  = ncvar_get(nc    = ncngp,
                           varid = "trewartha_colors",
-                          start = c( 3),
+                          start = c( 4),
                           count = c(-1))
 
 
@@ -104,18 +105,18 @@ for (t in 1:length(year_start))
 
       dimnames(class) = list("lon"       = lon,
                              "lat"       = lat,
-                             "scenario"  = scenario,
-                             "ensemble"  = ensemble,
-                             "time_bnds" = time_bnds)
+                             "scenario"  = scenario)
 
       class = melt(data       = class,
                   value.name = "Class_Number",
                   id.vars    = c("lon",
                                  "lat",
-                                 "scenario",
-                                 "ensemble",
-                                 "time_bnds"),
+                                 "scenario"),
                   na.rm     = FALSE)
+      
+      
+      class$scenario     = as.character(x = class$scenario)
+      class$Class_Number =   as.numeric(x = class$Class_Number)
 
       if (year_end[t] <= 2005) {
         class          = class %>% filter(!(scenario == "rcp85"))
@@ -124,10 +125,7 @@ for (t in 1:length(year_start))
         class$scenario[(class$scenario == "hist/rcp45")] = "RCP 4.5"
         class$scenario[(class$scenario == "rcp85")]      = "RCP 8.5"
       }
-        
-      class$scenario     = as.character(x = class$scenario)
-      class$time_bnds    =   as.numeric(x = class$time_bnds)
-      class$Class_Number =   as.numeric(x = class$Class_Number)
+
 
       class$Class_Number[class$Class_Number == 0] = NA
       
