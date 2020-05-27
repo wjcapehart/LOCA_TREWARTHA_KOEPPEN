@@ -25,8 +25,8 @@
 
 ## Mapping Information
 
-library(package = "rnaturalearth") # World Map Data from Natural Earth
-library(package = "rgdal")         # Bindings for the 'Geospatial' Data Abstraction Library
+#library(package = "rnaturalearth") # World Map Data from Natural Earth
+#library(package = "rgdal")         # Bindings for the 'Geospatial' Data Abstraction Library
 #
 ###############################################################
   
