@@ -10,12 +10,10 @@
 
 
   library(package = "reshape2")  # manipulating data frames
-  library(package = "extRemes")  # extreme data analysis
   library(package = "abind")
 
   library(package = "ncdf4")
 
-  library(package = "PCICt")
 
   library(package = "ClimClass")
 

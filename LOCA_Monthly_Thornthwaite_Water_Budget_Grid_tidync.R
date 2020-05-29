@@ -1,10 +1,4 @@
----
-title: "PDSI Index"
-output: html_notebook
----
 
-
-```{r}
 
 ###############################################################
 #
@@ -30,12 +24,7 @@ output: html_notebook
 
 #
 ###############################################################
-  
-```
 
-File Control
-
-```{r}
 
 ###############################################################
 #
@@ -43,19 +32,16 @@ File Control
 
 
   URL_Root = "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/LOCA_NGP/climatology/"
- # URL_Root = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/climatology/"
+  Final_Root_Out_Dir = "./"
 
-
+  URL_Root = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/climatology/"
+  Final_Root_Out_Dir = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget"
 
 #
 ###############################################################
   
 
-```
 
-
-
-```{r}
 
 
 ###############################################################
@@ -93,20 +79,12 @@ ensembles = c( "ACCESS1-0_r1i1p1",
 ###############################################################
   
 
-```
-
-
-Selecting Point Ranges
-
-(only asking for cheyenne for this)
-
-```{r}
 
 # Cracking huc grids.
 HUC06 = 1012
 soil_zone_capacity = 150
 initial_snow_cover = 0
-plotme = TRUE
+plotme = FALSE
 
 
 URL_Name = "http://kyrill.ias.sdsmt.edu:8080/thredds/fileServer/CLASS_Examples/HUC08_Missouri_River_Basin.Rdata"
@@ -163,12 +141,7 @@ remove(min_lat)
 remove(max_lon)
 remove(max_lat)
 
-```
 
-
-Read Metadata
-
-```{r}
 
 ###############################################################
 #
@@ -305,7 +278,9 @@ Read Metadata
     raster_test = ncvar_get(nc           = ncf, 
                           varid        = variable, 
                           start        = c(min_i,min_j,1),
-                          count        = c(nx,ny,1),
+                          count  
+                          
+                          = c(nx,ny,1),
                           verbose      = FALSE,
                           raw_datavals = FALSE )    
     
@@ -382,7 +357,7 @@ time_bounds = array( NA,
                      dimnames=list("bnds" = c("low","high"),
                                    "date" = time))
 time_bounds[1,] = date_start - as.numeric(as.Date("1900-01-01 00:00:00 UTC"))
-time_bounds[2,] = date_end - as.numeric(as.Date("1900-01-01 00:00:00 UTC"))
+time_bounds[2,] = date_end   - as.numeric(as.Date("1900-01-01 00:00:00 UTC"))
 
 
 
@@ -407,13 +382,7 @@ remove(tunits)
 remove(agg)
 
 
-```
 
-
-Get Avaiable Soil Water Capacity.
-
-
-```{r}
 
 
 ###############################################################
@@ -424,20 +393,15 @@ Get Avaiable Soil Water Capacity.
 
 URL_Name = "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/CLASS_Examples/NGP_US_AWC.nc"
 
-  ncf = nc_open(filename = URL_Name)
-
-  awc_map = ncvar_get(nc         = ncf,
-                      varid        = "usda_awc",
-                      verbose      = FALSE,
-                      raw_datavals = FALSE,
-                      start        = c(min_i,min_j),
-                      count        = c(  nx,    ny)) 
-
-
-  remove(ncf)    
-
+  ncf = tidync(x = URL_Name) %>%
+    activate("usda_awc","lat","lon") %>%
+    hyper_filter(lon = between(index,min_i,max_i),
+                 lat = between(index,min_j,max_j))
   
-  awc_map = array(data  = awc_map,
+  awc_map = ncf %>% 
+    hyper_array(select_var = "usda_awc")
+
+  awc_map = array(data  = awc_map$usda_awc,
                   dim   = c(length(longitude),
                             length(latitude)),
                   dimnames = list(longitude = longitude,
@@ -454,17 +418,12 @@ URL_Name = "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/CLASS_Examples/NGP_US
                                     ylab = "Latitude"))
     
   }
+
     
 #
 ###############################################################
 
-```
 
-
-
-Create Annual Holding Variable
-
-```{r}
 
 ###############################################################
 #
@@ -489,10 +448,7 @@ Create Annual Holding Variable
 
 #
 ###############################################################
-```
 
-
-```{r}
 ###############################################################
 #
 # Crunch By Ensemble
@@ -530,7 +486,7 @@ Create Annual Holding Variable
     storage[,,,,]               = NA
     deficit[,,,,]               = NA
     recharge[,,,,]              = NA
-    surplus[,,,,]              = NA
+    surplus[,,,,]               = NA
     
 
 
@@ -830,29 +786,16 @@ Create Annual Holding Variable
     print(str_c("     "))
 
     
-    { # Spatially Through Map
+    { # Spatially Stroll Through Map
       
-      #Longitude = longitude[1]
       
-      for (Longitude in longitude[1:3])
-      { # longitude
-        lon_i    = which(longitude == Longitude)
-
         
+      #Latitude = latitude[1]
         
-        #Latitude = latitude[1]
+      for (Latitude in latitude)
+      { # latitude
+        lat_j    = which(latitude == Latitude)    
         
-        for (Latitude in latitude[1:3])
-        { # latitude
-          lat_j    = which(latitude == Latitude)
-          
-          print(str_c(Ensemble,
-                      Longitude,
-                      Latitude,
-                      sep = " "))
-             
-          { # Historical Data Pull 
-      
             scen   = "historical"
             period = "1950-2005"
       
@@ -869,8 +812,8 @@ Create Annual Holding Variable
                                  varid        = variable,
                                  verbose      = FALSE,
                                  raw_datavals = FALSE,
-                                 start        = c(lon_i,lat_j,  1),
-                                 count        = c(   1,     1, -1))
+                                 start        = c(min_i,(min_j+lat_j-1),  1),
+                                 count        = c(   nx,              1, -1))
   
                 
               } # pr hist
@@ -889,8 +832,8 @@ Create Annual Holding Variable
                                    varid        = variable,
                                    verbose      = FALSE,
                                    raw_datavals = FALSE,
-                                   start        = c(lon_i,lat_j,  1),
-                                   count        = c(   1,     1, -1)) 
+                                   start        = c(min_i,(min_j+lat_j-1),  1),
+                                   count        = c(   nx,              1, -1))
   
               } # tasmin hist
     
@@ -908,25 +851,11 @@ Create Annual Holding Variable
                                    varid        = variable,
                                    verbose      = FALSE,
                                    raw_datavals = FALSE,
-                                   start        = c(lon_i,lat_j,  1),
-                                   count        = c(   1,     1, -1))
+                                   start        = c(min_i,(min_j+lat_j-1),  1),
+                                   count        = c(   nx,              1, -1))
                 
               } # tasmax hist
             
-              hist =     tibble(time  = date_hist,
-                                year  = year(date_hist),
-                                month = month(date_hist),
-                                P     = pr_0,
-                                Tn    = tmin_0,
-                                Tx    = tmax_0,
-                                Tm    = (tmin_0+tmax_0)/2)
-
-              remove(pr_0, tmin_0, tmax_0)
-              
-          } # Historical Data Pull 
-          
-          { # RCP 4.5 Data Pull      
-      
             scen   = "rcp45"
             period = "2006-2099"
       
@@ -943,8 +872,8 @@ Create Annual Holding Variable
                                  varid        = variable,
                                  verbose      = FALSE,
                                  raw_datavals = FALSE,
-                                 start        = c(lon_i,lat_j,  1),
-                                 count        = c(   1,     1, -1))
+                                 start        = c(min_i,(min_j+lat_j-1),  1),
+                                 count        = c(   nx,              1, -1))
   
                 
               } # pr rcp45
@@ -963,8 +892,8 @@ Create Annual Holding Variable
                                    varid        = variable,
                                    verbose      = FALSE,
                                    raw_datavals = FALSE,
-                                   start        = c(lon_i,lat_j,  1),
-                                   count        = c(   1,     1, -1))  
+                                   start        = c(min_i,(min_j+lat_j-1),  1),
+                                   count        = c(   nx,              1, -1))
   
               } # tasmin rcp45
     
@@ -982,25 +911,11 @@ Create Annual Holding Variable
                                    varid        = variable,
                                    verbose      = FALSE,
                                    raw_datavals = FALSE,
-                                   start        = c(lon_i,lat_j,  1),
-                                   count        = c(   1,     1, -1))
+                                   start        = c(min_i,(min_j+lat_j-1),  1),
+                                   count        = c(   nx,              1, -1))
                 
-              } # tasmax rcp45
+              } # tasmax rcp45    
             
-              rcp45 =     tibble(time  = date_futr,
-                                 year  = year(date_futr),
-                                 month = month(date_futr),
-                                 P     = pr_4,
-                                 Tn    = tmin_4,
-                                 Tx    = tmax_4,
-                                 Tm    = (tmin_4+tmax_4)/2)
-              
-              remove(pr_4, tmin_4, tmax_4)
-              
-          } # RCP 4.5 Data Pull           
-          
-          { # RCP 8.5 Data Pull      
-      
             scen   = "rcp85"
             period = "2006-2099"
       
@@ -1017,8 +932,8 @@ Create Annual Holding Variable
                                  varid        = variable,
                                  verbose      = FALSE,
                                  raw_datavals = FALSE,
-                                 start        = c(lon_i,lat_j,  1),
-                                 count        = c(   1,     1, -1))
+                                 start        = c(min_i,(min_j+lat_j-1),  1),
+                                 count        = c(   nx,              1, -1))
   
                 
               } # pr rcp85
@@ -1037,8 +952,8 @@ Create Annual Holding Variable
                                    varid        = variable,
                                    verbose      = FALSE,
                                    raw_datavals = FALSE,
-                                   start        = c(lon_i,lat_j,  1),
-                                   count        = c(   1,     1, -1))  
+                                   start        = c(min_i,(min_j+lat_j-1),  1),
+                                   count        = c(   nx,              1, -1))
   
               } # tasmin rcp85
     
@@ -1056,21 +971,60 @@ Create Annual Holding Variable
                                    varid        = variable,
                                    verbose      = FALSE,
                                    raw_datavals = FALSE,
-                                   start        = c(lon_i,lat_j,  1),
-                                   count        = c(   1,     1, -1))
+                                   start        = c(min_i,(min_j+lat_j-1),  1),
+                                   count        = c(   nx,              1, -1))
                 
-              } # tasmax rcp85
+              } # tasmax rcp85   
+        
+        for (Longitude in longitude)
+        { # longitude
+          lon_i    = which(longitude == Longitude)
+         
+          print(str_c(Ensemble,
+                      Longitude, "[",sprintf("%3.1f",(lon_i*100/nx)),"%]",
+                      Latitude,  "[",sprintf("%3.1f",(lat_j*100/ny)),"%]",
+                      sep = " "))
+             
+          { # Historical Data Pull 
+
+              hist =     tibble(time  = date_hist,
+                                year  = year(date_hist),
+                                month = month(date_hist),
+                                P     = pr_0[lon_i,],
+                                Tn    = tmin_0[lon_i,],
+                                Tx    = tmax_0[lon_i,],
+                                Tm    = (tmin_0[lon_i,]+tmax_0[lon_i,])/2)
+
+          } # Historical Data Pull 
+          
+          { # RCP 4.5 Data Pull      
+      
+
+            
+              rcp45 =     tibble(time  = date_futr,
+                                 year  = year(date_futr),
+                                 month = month(date_futr),
+                                 P     = pr_4[lon_i,],
+                                 Tn    = tmin_4[lon_i,],
+                                 Tx    = tmax_4[lon_i,],
+                                 Tm    = (tmin_4[lon_i,]+tmax_4[lon_i,])/2)
+              
+
+          } # RCP 4.5 Data Pull           
+          
+          { # RCP 8.5 Data Pull      
+      
+
             
               rcp85 =     tibble(time  = date_futr,
                                  year  = year(date_futr),
                                  month = month(date_futr),
-                                 P     = pr_8,
-                                 Tn    = tmin_8,
-                                 Tx    = tmax_8,
-                                 Tm    = (tmin_8+tmax_8)/2)
+                                 P     = pr_8[lon_i,],
+                                 Tn    = tmin_8[lon_i,],
+                                 Tx    = tmax_8[lon_i,],
+                                 Tm    = (tmin_8[lon_i,]+tmax_8[lon_i,])/2)
               
-              remove(pr_8, tmin_8, tmax_8)   
-              
+
           } # RCP 8.5 Data Pull  
         
         
@@ -1143,7 +1097,16 @@ Create Annual Holding Variable
             
           } # Calculate Water Budgtet
           
-          { # Load Thorntwaite Direct Water Budget Fields into their Variables
+
+
+            
+                    
+        } # longitude
+        
+        
+      } # latitude
+      
+      { # Load Thorntwaite Direct Water Budget Fields into their Variables
             
             evaporation = potential_evaporation - deficit
           
@@ -1156,16 +1119,9 @@ Create Annual Holding Variable
             snowpack[recharge<0] = 0
           
           } # Load Thorntwaite Direct Water Budget Fields into their Variables
-
-            
-                    
-        } # latitude
-        
-        
-      } # longitude
       
       
-    } # Calculate Climate Classification
+    } # Spatially Stroll Through Map
     
     
     nc_close(nc = nc_p0)  
@@ -1212,6 +1168,17 @@ Create Annual Holding Variable
       fill_value_float = 9.96921e+36
       fill_value_dble  = 9.969209968386869e+36
       
+      
+        temperature[,,2,1:t9h,]           = NA
+        precipitation[,,2,1:t9h,]         = NA
+        deficit[,,2,1:t9h,]               = NA
+        evaporation[,,2,1:t9h,]           = NA
+        potential_evaporation[,,2,1:t9h,] = NA
+        recharge[,,2,1:t9h,]              = NA
+        storage[,,2,1:t9h,]               = NA
+        snowpack[,,2,1:t9h,]              = NA
+        surplus[,,2,1:t9h,]               = NA
+
       
         netcdf_output_file_name = paste("./LOCAL_CHEYENNE_THORTHWAITE_",
                                   Ensemble,
@@ -1954,6 +1921,7 @@ Create Annual Holding Variable
                 
         nc_close(nc_bud)
         
+
       
       
     }  # OUTPUT NETCDF FILE.
@@ -1963,4 +1931,3 @@ Create Annual Holding Variable
 
 #
 ###############################################################
-```
