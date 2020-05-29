@@ -998,7 +998,7 @@ URL_Name = str_c(AWC_MAP,
         { # longitude
           lon_i    = which(longitude == Longitude)
          
-          print(str_c(Ensemble,
+          print(str_c(Ensemble,  "[",sprintf("%3.1f",(ens_m*100/length(ensembles))),"%]",
                       Longitude, "[",sprintf("%3.1f",(lon_i*100/nx)),"%]",
                       Latitude,  "[",sprintf("%3.1f",(lat_j*100/ny)),"%]",
                       sep = " "))
