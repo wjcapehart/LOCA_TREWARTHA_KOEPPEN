@@ -32,10 +32,12 @@
 
 
   URL_Root = "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/"
+  AWC_MAP  = "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/CLASS_Examples/NGP_US_AWC.nc"
   Final_Root_Out_Dir = "./"
 
- # URL_Root = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/climatology/"
- # Final_Root_Out_Dir = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget"
+  URL_Root = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/"
+  AWC_MAP  = "/projects/THREDDS/local_academic_repo/CLASS_Examples/NGP_US_AWC.nc"
+  Final_Root_Out_Dir = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget"
 
 #
 ###############################################################
@@ -392,8 +394,7 @@ remove(agg)
 
 
 
-URL_Name = str_c(URL_Root,
-                 "CLASS_Examples/NGP_US_AWC.nc",
+URL_Name = str_c(AWC_MAP,
                  sep = "")
 
   ncf = tidync(x = URL_Name) %>%
