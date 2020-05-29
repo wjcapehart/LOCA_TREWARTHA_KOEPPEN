@@ -1168,7 +1168,7 @@ Create Annual Holding Variable
             
             snowpack = precipitation - evaporation - recharge - surplus
             
-            snowpack[recharge<0] = 0
+            snowpack[snowpack<0] = 0
           
           } # Load Thorntwaite Direct Water Budget Fields into their Variables
       
@@ -1818,7 +1818,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_temperature,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )       
@@ -1826,7 +1826,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_precip,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )   
@@ -1834,7 +1834,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_pot_evap         ,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )   
@@ -1842,7 +1842,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_evap,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )     
@@ -1850,7 +1850,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_storage,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )   
@@ -1858,7 +1858,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_deficit,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )    
@@ -1867,7 +1867,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_snowpack,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )       
@@ -1875,7 +1875,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_recharge,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )      
@@ -1884,7 +1884,7 @@ Create Annual Holding Variable
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_surplus,
                   attname    = "scale_factor",
-                  attval     = 0.01,
+                  attval     = 0.1,
                   prec       = "single",
                   verbose    = FALSE,
                   definemode = FALSE )             
