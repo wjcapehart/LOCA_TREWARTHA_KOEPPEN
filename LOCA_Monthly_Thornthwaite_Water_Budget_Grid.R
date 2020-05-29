@@ -1200,6 +1200,8 @@ URL_Name = str_c(AWC_MAP,
       
         netcdf_output_file_name = str_c(Final_Root_Out_Dir,
                                         "LOCAL_CHEYENNE_THORTHWAITE_",
+                                        Ensemble,
+                                        ".nc",
                                         sep="")
         
         #### Dimensions
