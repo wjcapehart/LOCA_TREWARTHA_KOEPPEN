@@ -7,7 +7,6 @@
   library(package = "tidyverse")
 
   library(package = "lubridate") # processing dates and time
-  library(package = "stringr")
 
 
   library(package = "reshape2")  # manipulating data frames
@@ -31,14 +30,20 @@
 # File Control
 
 
+hostname = Sys.info()["nodename"]
+
+if (str_detect(string = hostname, pattern = "mandrenke")) 
+{
+  print("Processing on Mandrenke")
   URL_Root = "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/"
   AWC_MAP  = "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/CLASS_Examples/NGP_US_AWC.nc"
   Final_Root_Out_Dir = "./"
-
+} else {
+  print("Processing on ias.sdsmt.edu")
   URL_Root = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/"
   AWC_MAP  = "/projects/THREDDS/local_academic_repo/CLASS_Examples/NGP_US_AWC.nc"
   Final_Root_Out_Dir = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget"
-
+}
 #
 ###############################################################
   
