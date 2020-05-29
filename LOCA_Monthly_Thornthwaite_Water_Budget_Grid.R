@@ -470,12 +470,12 @@ URL_Name = str_c(AWC_MAP,
     surplus               = a_var
     
 
-  Ensemble = ensembles[1]
+  Ensemble = ensembles
 
 
 
 
-  # for (Ensemble in ensembles)
+  for (Ensemble in ensembles)
   { # Ensemble
     
     
@@ -1888,7 +1888,7 @@ URL_Name = str_c(AWC_MAP,
         
         ncvar_put(nc      = nc_bud,
                   varid   = netcdf_temperature,
-                  vals    = round(x = temperature * 0.1, digits=0),
+                  vals    = round(x = temperature * 10, digits=0),
                   verbose = FALSE )
         
         ncvar_put(nc      = nc_bud,

@@ -1922,7 +1922,7 @@ Create Annual Holding Variable
         
         ncvar_put(nc      = nc_bud,
                   varid   = netcdf_temperature,
-                  vals    = round(x = temperature * 0.1, digits=0),
+                  vals    = round(x = temperature * 10, digits=0),
                   verbose = FALSE )
         
         ncvar_put(nc      = nc_bud,
