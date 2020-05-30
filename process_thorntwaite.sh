@@ -85,7 +85,7 @@ echo *****************
         nohup ncecat -u ensemble ./LOCAL_CHEYENNE_THORTHWAITE_*.nc ./LOCAL_TREWARTHA_ALL.nc
   echo  nohup nccopy -4 -d 8     ./LOCAL_TREWARTHA_ALL.nc          ./LOCAL_TREWARTHA_ALL_ENSEMBLES.nc
         nohup nccopy -4 -d 8     ./LOCAL_TREWARTHA_ALL.nc          ./LOCAL_TREWARTHA_ALL_ENSEMBLES.nc
-
+        rm -frv                  ./LOCAL_TREWARTHA_ALL.nc
   echo
   echo
   echo "We're Out of Here Like Vladimir"
