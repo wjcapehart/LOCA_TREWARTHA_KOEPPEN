@@ -83,10 +83,10 @@ echo *****************
 
   echo  nohup ncrcat         ./LOCAL_CHEYENNE_THORTHWAITE_*.nc ./LOCAL_TREWARTHA_ALL.nc
         nohup ncrcat         ./LOCAL_CHEYENNE_THORTHWAITE_*.nc ./LOCAL_TREWARTHA_ALL.nc
-        
+
   echo  nohup nccopy -4 -d 8 ./LOCAL_TREWARTHA_ALL.nc          ./LOCAL_TREWARTHA_ALL_ENSEMBLES.nc
         nohup nccopy -4 -d 8 ./LOCAL_TREWARTHA_ALL.nc          ./LOCAL_TREWARTHA_ALL_ENSEMBLES.nc
-        rm -frv              ./LOCAL_TREWARTHA_ALL.nc
+        rm -frv              ./LOCAL_TREWARTHA_ALL.nc ./nohup.out
   echo
   echo
   echo "We're Out of Here Like Vladimir"

@@ -517,7 +517,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_TOTAL"
 
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -547,7 +547,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -577,7 +577,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -614,7 +614,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_TOTAL"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -644,7 +644,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -674,7 +674,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -711,7 +711,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_TOTAL"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -741,7 +741,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -771,7 +771,7 @@ URL_Name = str_c(AWC_MAP,
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -822,7 +822,7 @@ URL_Name = str_c(AWC_MAP,
                 var = "pr"
 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -842,7 +842,7 @@ URL_Name = str_c(AWC_MAP,
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -861,7 +861,7 @@ URL_Name = str_c(AWC_MAP,
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -882,7 +882,7 @@ URL_Name = str_c(AWC_MAP,
                 var = "pr"
 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -902,7 +902,7 @@ URL_Name = str_c(AWC_MAP,
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -921,7 +921,7 @@ URL_Name = str_c(AWC_MAP,
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -942,7 +942,7 @@ URL_Name = str_c(AWC_MAP,
                 var = "pr"
 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -962,7 +962,7 @@ URL_Name = str_c(AWC_MAP,
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -981,7 +981,7 @@ URL_Name = str_c(AWC_MAP,
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 

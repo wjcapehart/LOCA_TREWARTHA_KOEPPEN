@@ -556,7 +556,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_TOTAL"
 
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -586,7 +586,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -615,7 +615,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -651,7 +651,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_TOTAL"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -680,7 +680,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -709,7 +709,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -745,7 +745,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_TOTAL"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -775,7 +775,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -805,7 +805,7 @@ Create Annual Holding Variable
           agg = "CDO_MONTHLY_MEAN"
           
           variable = str_c(var,
-                           ens,
+                           Ensemble,
                            scen,
                            sep = "_")
           
@@ -856,7 +856,7 @@ Create Annual Holding Variable
                 var = "pr"
 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -876,7 +876,7 @@ Create Annual Holding Variable
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -895,7 +895,7 @@ Create Annual Holding Variable
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -916,7 +916,7 @@ Create Annual Holding Variable
                 var = "pr"
 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -936,7 +936,7 @@ Create Annual Holding Variable
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -955,7 +955,7 @@ Create Annual Holding Variable
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -976,7 +976,7 @@ Create Annual Holding Variable
                 var = "pr"
 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -996,7 +996,7 @@ Create Annual Holding Variable
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
@@ -1015,7 +1015,7 @@ Create Annual Holding Variable
                 agg = "CDO_MONTHLY_MEAN"
                 
                 variable = str_c(var,
-                                 ens,
+                                 Ensemble,
                                  scen,
                                  sep = "_")
                 
