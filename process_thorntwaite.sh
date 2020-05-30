@@ -72,8 +72,8 @@ echo *****************
     echo
     echo Compress and Convert File
     echo
-    echo nohup nccopy -7 -d 8 ./temp.nc ${filename}
-         nohup nccopy -7 -d 8 ./temp.nc ${filename}
+    echo nohup nccopy -7 -d 9 ./temp.nc ${filename}
+         nohup nccopy -7 -d 9 ./temp.nc ${filename}
          rm -frv ./temp.nc
 
 
@@ -84,8 +84,8 @@ echo *****************
   echo  nohup ncrcat         ./LOCAL_CHEYENNE_THORTHWAITE_*.nc ./LOCAL_TREWARTHA_ALL.nc
         nohup ncrcat         ./LOCAL_CHEYENNE_THORTHWAITE_*.nc ./LOCAL_TREWARTHA_ALL.nc
 
-  echo  nohup nccopy -4 -d 8 ./LOCAL_TREWARTHA_ALL.nc          ./LOCAL_TREWARTHA_ALL_ENSEMBLES.nc
-        nohup nccopy -4 -d 8 ./LOCAL_TREWARTHA_ALL.nc          ./LOCAL_TREWARTHA_ALL_ENSEMBLES.nc
+  echo  nohup nccopy -4 -d 9 ./LOCAL_TREWARTHA_ALL.nc          ./LOCAL_TREWARTHA_ALL_ENSEMBLES.nc
+        nohup nccopy -4 -d 9 ./LOCAL_TREWARTHA_ALL.nc          ./LOCAL_TREWARTHA_ALL_ENSEMBLES.nc
         rm -frv              ./LOCAL_TREWARTHA_ALL.nc ./nohup.out
   echo
   echo
