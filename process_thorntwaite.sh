@@ -4,10 +4,10 @@
 OS_NAME=`uname`
 HOST_NAME=`hostname`
 
-TEST_STRING=`nccopy https://cida.usgs.gov/thredds/dodsC/loca_future?lat[0:1:489] deleteme.nc`
 
 echo ****************
-echo ** Test String ||$TEST_STRING|| **
+echo **   OS_NAME  ${OS_NAME}
+echo ** HOST_NAME  ${HOST_NAME}
 echo *****************
 
 
