@@ -632,6 +632,8 @@ begin
     delete(k)
     delete(temp)
     delete(index_hist)
+    delete(in_file)
+    delete(out_file)
 
 
      print("------------------")
