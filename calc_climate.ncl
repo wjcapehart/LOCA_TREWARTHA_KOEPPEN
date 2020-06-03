@@ -95,6 +95,7 @@ begin
         print("All Future")
         scenario(0) = (/ "RCP45" /)
       end if
+      print(scenario)
 
 
     x := fin->mean_temperature
@@ -102,9 +103,9 @@ begin
       x&month = month
       x&ensemble        := ensemble
       if (max(year) .le. 2005) then
+        x := x(:,:,0:0,:,:)
         printVarSummary(x)
         print(scenario)
-        x := x(:,:,0:0,:,:)
         x&scenario        = scenario
       else
         if (min(year) .lt. 2005) then
