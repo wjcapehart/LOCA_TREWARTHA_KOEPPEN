@@ -90,6 +90,7 @@ begin
         print("All Historical")
         scenario = scenario(0:0)
         scenario(0) = (/ "Historical" /)
+        print(scenario)
       else
         print("All Future")
         scenario(0) = (/ "RCP45" /)
