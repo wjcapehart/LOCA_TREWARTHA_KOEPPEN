@@ -12,6 +12,10 @@ begin
   delta_t := 30h
   start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
 
+  delta_t := 30h
+  start_years := (/ 1961h  /)
+
+
   print(start_years)
 
   do ii = 0, dimsizes(start_years)-1
