@@ -102,16 +102,17 @@ begin
       x&month = month
       x&ensemble        := ensemble
       if (max(year) .le. 2005) then
+        printVarSummary(x)
+        print(scenario)
         x := x(:,:,0:0,:,:)
+        x&scenario        = scenario
       else
         if (min(year) .lt. 2005) then
           index_hist = ind((month .eq. 12) .and. (year .eq. 2005))
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      printVarSummary(x)
-      print(scenario)
-      x&scenario        = scenario
+
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
         y@description  := y@long_name
