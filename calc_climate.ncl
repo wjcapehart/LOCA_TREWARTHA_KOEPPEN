@@ -89,7 +89,6 @@ begin
       ensemble!0 = "ensemble"
       ensemble&ensemble = ensemble
 
-      print(ensemble)
 
     lon       := fin->lon
     lat       := fin->lat
