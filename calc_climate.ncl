@@ -86,6 +86,11 @@ begin
       month@long_name = "month"
 
 
+      if (max(year) .le. 2005) then
+        scenario = scenario(0:0)
+        scenario(0) := "Historical"
+      end if
+
 
     x := fin->mean_temperature
       x!0     = "month"
