@@ -135,8 +135,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
@@ -169,8 +167,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
@@ -203,8 +199,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
@@ -236,8 +230,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
@@ -269,8 +261,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
@@ -303,8 +293,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
@@ -337,8 +325,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
@@ -371,8 +357,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
