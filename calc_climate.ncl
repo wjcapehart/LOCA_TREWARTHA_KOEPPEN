@@ -53,7 +53,9 @@ begin
     out_file   = "./LOCAL_TREWARTHA_ALL_ENSEMBLES_CLIM_"+climatology_period+".nc"
 
 
-    fin = addfile(in_file,"r")
+    fin  = addfile(in_file, "r")
+    system("rm -frv " + out_file)
+    fout = addfile(out_file,"c")
 
     time      := fin->time
     scenario  := fin->scenario
