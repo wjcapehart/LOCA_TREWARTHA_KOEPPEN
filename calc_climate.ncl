@@ -113,7 +113,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round(  dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
@@ -146,7 +146,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round(  dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
@@ -180,7 +180,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round(  dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
@@ -214,7 +214,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round(  dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
@@ -247,7 +247,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/  round( dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
@@ -280,7 +280,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
@@ -314,7 +314,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
@@ -348,7 +348,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
@@ -382,7 +382,7 @@ begin
         z@long_name    := "StDev Monthly " + y@long_name
         z@description  := y@long_name
         z@cell_methods := "time : monthly standard deviation"
-      do k = 0:11
+      do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
