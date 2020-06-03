@@ -36,7 +36,6 @@ begin
     climatology_end_year@standard_name      = "time"
     climatology_end_year@units              = "years since 0000-01-01 00:00:00"
     climatology_end_year@calendar           = "standard"
-    climatology_end_year@bounds             = "climatology_bnds"
     climatology_end_year!0                  = "climatology_period"
 
 
@@ -55,7 +54,7 @@ begin
 
 
     climatology_duration    = (/ delta_t  /)
-    climatology_period@long_name = "length of climatology period"
+    climatology_duration@long_name = "length of climatology period"
     climatology_duration@description = "length of climatology period"
     climatology_duration@standard_name = "time"
     climatology_duration!0 = "climatology_period"
@@ -552,10 +551,10 @@ begin
     stdev_recharge&month = month
     stdev_surplus&month = month
 
-    print("writing " + climatology_period)
-    print("        " + climatology_bnds)
-    print("        " + climatology_year_bnds)
-    print("        " + climatology_duration)
+    print("writing period " + climatology_period)
+    print("    timebounds " + climatology_bnds)
+    print("    yearbounds " + climatology_year_bnds)
+    print(" period length " + climatology_duration)
 
     fout->climatology_period = climatology_period
     fout->month = month
@@ -625,6 +624,7 @@ begin
     delete(time)
     delete(climatology_year_bnds)
     delete(climatology_duration)
+    delete(climatology_period)
     delete(climatology_bnds)
     delete(climatology_start_year)
     delete(climatology_end_year)
@@ -636,5 +636,7 @@ begin
 
      print("------------------")
   end do
+
+  system("ncecat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_????-????.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+climatology_duration+"-yr.nc"    )
 
 end
