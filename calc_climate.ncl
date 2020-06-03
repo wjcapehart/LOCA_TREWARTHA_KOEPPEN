@@ -104,14 +104,13 @@ begin
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
-        scenario(0) = (/ "RCP45" /)
         if (min(year) .lt. 2005) then
           index_hist = ind((month .eq. 12) .and. (year .eq. 2005))
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
       printVarSummary(x)
-      printVarSummary(scenario)
+      print(scenario)
       x&scenario        = scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
