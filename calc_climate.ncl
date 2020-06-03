@@ -79,12 +79,15 @@ begin
     scenario  := chartostring(scenario)
       scenario@long_name   = "Scenario"
       scenario@description = scenario@long_name
-    ensemble  := fin->ensemble
-    ensemble  := chartostring(ensemble)
+
+
+    ensemble  := chartostring(fin->ensemble)
       ensemble@long_name   = "Ensemble"
       ensemble@description = ensemble@long_name
       ensemble!0 = "ensemble"
       ensemble&ensemble = ensemble
+
+      print(ensemble)
 
     lon       := fin->lon
     lat       := fin->lat
@@ -151,22 +154,6 @@ begin
 
 
 
-
-
-              print(out_file)
-              print(climatology_year_bnds)
-              fout->climatology_period = climatology_period
-              fout->month = month
-              fout->ensemble = ensemble
-              fout->lon = lon
-              fout->lat = lat
-              fout->climatology_bnds = climatology_bnds
-              fout->lon_bnds = lon_bnds
-              fout->lat_bnds = lat_bnds
-              fout->climatology_year_bnds = climatology_year_bnds
-              fout->climatology_duration = climatology_duration
-
-print(fout)
 
 
 
@@ -478,6 +465,66 @@ print(fout)
         month@calendar_month_LUT = (/ default_fillvalue("string"), "January", "February", "March","April","May","June","July","August","September","October","November","December" /)
         month@comment = "calendar month LUT indexing starts at 0, 1=January, 12=December"
 
+        delete(mean_monthly_temperature&month)
+        delete(mean_monthly_precipitation&month)
+        delete(mean_potential_evapotranspiration&month)
+        delete(mean_evapotranspiration&month)
+        delete(mean_storage&month)
+        delete(mean_snowpack&month)
+        delete(mean_deficit&month)
+        delete(mean_recharge&month)
+        delete(mean_surplus&month)
+
+        delete(stdev_monthly_temperature&month)
+        delete(stdev_monthly_precipitation&month)
+        delete(stdev_potential_evapotranspiration&month)
+        delete(stdev_evapotranspiration&month)
+        delete(stdev_storage&month)
+        delete(stdev_snowpack&month)
+        delete(stdev_deficit&month)
+        delete(stdev_recharge&month)
+        delete(stdev_surplus&month)
+
+    delete(mean_monthly_temperature!0)
+    delete(mean_monthly_precipitation!0)
+    delete(mean_potential_evapotranspiration!0)
+    delete(mean_evapotranspiration!0)
+    delete(mean_storage!0)
+    delete(mean_snowpack!0)
+    delete(mean_deficit!0)
+    delete(mean_recharge!0)
+    delete(mean_surplus!0)
+
+    delete(stdev_monthly_temperature!0)
+    delete(stdev_monthly_precipitation!0)
+    delete(stdev_potential_evapotranspiration!0)
+    delete(stdev_evapotranspiration!0)
+    delete(stdev_storage!0)
+    delete(stdev_snowpack!0)
+    delete(stdev_deficit!0)
+    delete(stdev_recharge!0)
+    delete(stdev_surplus!0)
+
+    mean_monthly_temperature!0 = "month"
+    mean_monthly_precipitation!0 = "month"
+    mean_potential_evapotranspiration!0 = "month"
+    mean_evapotranspiration!0 = "month"
+    mean_storage!0 = "month"
+    mean_snowpack!0 = "month"
+    mean_deficit!0 = "month"
+    mean_recharge!0 = "month"
+    mean_surplus!0 = "month"
+
+    stdev_monthly_temperature!0 = "month"
+    stdev_monthly_precipitation!0 = "month"
+    stdev_potential_evapotranspiration!0 = "month"
+    stdev_evapotranspiration!0 = "month"
+    stdev_storage!0 = "month"
+    stdev_snowpack!0 = "month"
+    stdev_deficit!0 = "month"
+    stdev_recharge!0 = "month"
+    stdev_surplus!0 = "month"
+
 
     fout->mean_monthly_temperature          = mean_monthly_temperature
     fout->mean_monthly_precipitation        = mean_monthly_precipitation
@@ -489,6 +536,16 @@ print(fout)
     fout->mean_recharge                     = mean_recharge
     fout->mean_surplus                      = mean_surplus
 
+    fout->climatology_period = climatology_period
+    fout->month = month
+    fout->ensemble = ensemble
+    fout->lon = lon
+    fout->lat = lat
+    fout->climatology_bnds = climatology_bnds
+    fout->lon_bnds = lon_bnds
+    fout->lat_bnds = lat_bnds
+    fout->climatology_year_bnds = climatology_year_bnds
+    fout->climatology_duration = climatology_duration
 
     fout->stdev_monthly_temperature          = stdev_monthly_temperature
     fout->stdev_monthly_precipitation        = stdev_monthly_precipitation
