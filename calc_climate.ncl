@@ -3,6 +3,7 @@
 
 begin
   setfileoption("nc", "Format",  "NetCDF4")
+  setfileoption("nc", "CompressionLevel", 8)
 
   delta_t = 10h
 
