@@ -97,7 +97,7 @@ begin
     lon_bnds  := fin->lon_bnds
     time_bnds := fin->time_bnds
 
-    climatology_bnds      = (/ time_bnds(0:0,:) /)
+    climatology_bnds      = new((/  1,2 /), "short")
     climatology_bnds(0,0) = toshort(min(time))
     climatology_bnds(0,1) = toshort(max(time))
     climatology_bnds@long_name = "Climate Period Bounds"
@@ -110,7 +110,7 @@ begin
     climatology_bnds!1 = "bnds"
 
 
-    climatology_year_bnds      := (/ toshort(time_bnds(0:0,:)) /)
+    climatology_year_bnds      := new((/  1,2 /), "short")
     climatology_year_bnds(0,0) = toshort(climatology_start_year)
     climatology_year_bnds(0,1) = toshort(climatology_end_year)
     climatology_year_bnds@long_name = "Climate Period Bounds"
