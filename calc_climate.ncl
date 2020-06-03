@@ -121,8 +121,8 @@ begin
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/ round(  dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ round(  dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_monthly_temperature  := y
@@ -133,6 +133,7 @@ printVarSummary(mean_monthly_temperature)
       x!0        := "month"
       x&month    := month
       x&ensemble := ensemble
+      x&scenario := scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -152,8 +153,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/ round(  dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ round(  dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_monthly_precipitation  := y
@@ -165,6 +166,7 @@ printVarSummary(mean_monthly_temperature)
       x!0        := "month"
       x&month    := month
       x&ensemble := ensemble
+      x&scenario        := scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -184,8 +186,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/ round(  dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ round(  dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_potential_evapotranspiration  := y
@@ -197,6 +199,7 @@ printVarSummary(mean_monthly_temperature)
       x!0        := "month"
       x&month    := month
       x&ensemble := ensemble
+      x&scenario        := scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -216,8 +219,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/ round(  dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ round(  dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_evapotranspiration  := y
@@ -228,6 +231,7 @@ printVarSummary(mean_monthly_temperature)
       x!0        := "month"
       x&month    := month
       x&ensemble := ensemble
+      x&scenario        := scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -247,8 +251,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/  round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/  round( dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_storage  := y
@@ -259,6 +263,8 @@ printVarSummary(mean_monthly_temperature)
       x!0        := "month"
       x&month    := month
       x&ensemble := ensemble
+      x&scenario        := scenario
+
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -278,8 +284,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ round( dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_snowpack  := y
@@ -291,6 +297,8 @@ printVarSummary(mean_monthly_temperature)
       x!0        := "month"
       x&month    := month
       x&ensemble := ensemble
+      x&scenario        := scenario
+
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -310,8 +318,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ round( dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_deficit  := y
@@ -323,6 +331,8 @@ printVarSummary(mean_monthly_temperature)
       x!0        := "month"
       x&month    := month
       x&ensemble := ensemble
+      x&scenario        := scenario
+
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -342,8 +352,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ round( dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_recharge  := y
@@ -355,6 +365,8 @@ printVarSummary(mean_monthly_temperature)
       x!0        := "month"
       x&month    := month
       x&ensemble := ensemble
+      x&scenario        := scenario
+
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -374,8 +386,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ round( dim_avg_n(temp,0),3)   /)
+        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_surplus  := y
