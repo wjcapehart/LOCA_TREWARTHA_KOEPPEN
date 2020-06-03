@@ -87,9 +87,11 @@ begin
 
 
       if (max(year) .le. 2005) then
+        print("All Historical")
         scenario = scenario(0:0)
         scenario(0) = (/ "Historical" /)
       else
+        print("All Future")
         scenario(0) = (/ "RCP45" /)
       end if
 
