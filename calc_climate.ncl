@@ -88,7 +88,9 @@ begin
 
       if (max(year) .le. 2005) then
         scenario = scenario(0:0)
-        scenario(0) := "Historical"
+        scenario(0) = (/ "Historical" /)
+      else
+        scenario(0) = (/ "RCP45" /)
       end if
 
 
@@ -98,17 +100,13 @@ begin
       x&ensemble        := ensemble
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
-        scenario := scenario(0:0)
-        scenario(0) = "Historical"
       else
-        scenario(0) = "RCP45"
+        scenario(0) = (/ "RCP45" /)
         if (min(year) .lt. 2005) then
           index_hist = ind((month .eq. 12) .and. (year .eq. 2005))
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-      scenario!0        := "scenario"
-      scenario&scenario := scenario
       x&scenario        := scenario
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
