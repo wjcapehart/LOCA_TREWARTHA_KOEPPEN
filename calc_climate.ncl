@@ -43,7 +43,6 @@ begin
     climatology_period                    := sprinti("%0.4i",climatology_start_year) + "-" +sprinti("%0.4i",climatology_end_year)
     climatology_period@long_name          = "Climatology Period"
     climatology_period@description        = climatology_period@long_name
-    climatology_period@bounds             = "climatology_bnds"
     climatology_period!0                  = "climatology_period"
     climatology_period&climatology_period = climatology_period
 
@@ -637,6 +636,8 @@ begin
      print("-------------------")
   end do
 
-  system("ncecat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_????-????.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+climatology_duration+"-yr.nc"    )
+  print("ncecat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
+
+  system("ncecat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
 
 end
