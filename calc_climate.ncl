@@ -26,7 +26,6 @@ begin
     climatology_start_year@standard_name      = "time"
     climatology_start_year@units              = "years since 0000-01-01 00:00:00"
     climatology_start_year@calendar           = "standard"
-    climatology_start_year@bounds             = "climatology_bnds"
     climatology_start_year!0                  = "climatology_period"
 
 
