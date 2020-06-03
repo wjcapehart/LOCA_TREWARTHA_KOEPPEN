@@ -7,7 +7,11 @@ begin
 
   delta_t = 10h
 
-  start_years =toshort(ispan(1950,2090,delta_t))
+  start_years =: toshort(ispan(1950,2090,delta_t))
+
+  delta_t = 30h
+  start_years =: (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h )
+
   print(start_years)
 
   do ii = 0, dimsizes(start_years)-1
@@ -58,9 +62,9 @@ begin
 
 
 
-    in_file    := "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget/"+climatology_duration+"-yr/LOCAL_TREWARTHA_ALL_ENSEMBLES_"+climatology_period+".nc"
-    in_file    = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget/"+climatology_duration+"-yr/LOCAL_TREWARTHA_ALL_ENSEMBLES_"+climatology_period+".nc"
-    out_file   := "./LOCAL_TREWARTHA_ALL_ENSEMBLES_CLIM_"+climatology_period+".nc"
+    in_file    := "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCAL_THORNTHWAITE_ALL_ENSEMBLES_"+climatology_period+".nc"
+    in_file    = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCAL_THORNTHWAITE_ALL_ENSEMBLES_"+climatology_period+".nc"
+    out_file   := "./LOCAL_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+climatology_period+".nc"
 
 
     fin  := addfile(in_file, "r")
