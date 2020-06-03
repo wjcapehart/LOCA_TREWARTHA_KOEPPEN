@@ -106,6 +106,7 @@ begin
         x := x(:,:,0:0,:,:)
         printVarSummary(x)
         print(scenario)
+        delete(x&scenario)
         x&scenario        = scenario
       else
         if (min(year) .lt. 2005) then
