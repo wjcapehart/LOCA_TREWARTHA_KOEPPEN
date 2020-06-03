@@ -119,8 +119,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
-      mean_monthly_temperature  =: y
-      stdev_monthly_temperature =: z
+      mean_monthly_temperature  := y
+      stdev_monthly_temperature := z
 
 
     x := fin->total_precipitation
@@ -152,8 +152,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
-      mean_monthly_precipitation  =: y
-      stdev_monthly_precipitation =: z
+      mean_monthly_precipitation  := y
+      stdev_monthly_precipitation := z
 
 
 
@@ -186,8 +186,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
-      mean_potential_evapotranspiration  =: y
-      stdev_potential_evapotranspiration =: z
+      mean_potential_evapotranspiration  := y
+      stdev_potential_evapotranspiration := z
 
 
 
@@ -220,8 +220,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
-      mean_evapotranspiration  =: y
-      stdev_evapotranspiration =: z
+      mean_evapotranspiration  := y
+      stdev_evapotranspiration := z
 
 
     x := fin->storage
@@ -253,8 +253,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
-      mean_storage  =: y
-      stdev_storage =: z
+      mean_storage  := y
+      stdev_storage := z
 
 
     x := fin->snowpack
@@ -286,8 +286,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
       end do
 
-      mean_snowpack  =: y
-      stdev_snowpack =: z
+      mean_snowpack  := y
+      stdev_snowpack := z
 
 
 
@@ -320,8 +320,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
       end do
 
-      mean_deficit  =: y
-      stdev_deficit =: z
+      mean_deficit  := y
+      stdev_deficit := z
 
 
 
@@ -354,8 +354,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
       end do
 
-      mean_recharge  =: y
-      stdev_recharge =: z
+      mean_recharge  := y
+      stdev_recharge := z
 
 
 
@@ -388,8 +388,8 @@ begin
         z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
       end do
 
-      mean_surplus  =: y
-      stdev_surplus =: z
+      mean_surplus  := y
+      stdev_surplus := z
 
     fout->climatology_period = climatology_period
     fout->climatology_start_year = climatology_start_year
