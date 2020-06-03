@@ -12,8 +12,7 @@ begin
   delta_t := 30h
   start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
 
-  delta_t := 30h
-  start_years := (/ 1961h  /)
+
 
 
   print(start_years)
@@ -66,9 +65,9 @@ begin
 
 
 
-    in_file    := "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCAL_THORNTHWAITE_ALL_ENSEMBLES_"+climatology_period+".nc"
-    in_file    = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCAL_THORNTHWAITE_ALL_ENSEMBLES_"+climatology_period+".nc"
-    out_file   := "./LOCAL_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+climatology_period+".nc"
+    in_file    := "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_"+climatology_period+".nc"
+    in_file    =              "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_"+climatology_period+".nc"
+    out_file   :=             "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+climatology_period+".nc"
 
 
     fin  := addfile(in_file, "r")
@@ -105,9 +104,9 @@ begin
     lon_bnds  := fin->lon_bnds
     time_bnds := fin->time_bnds
 
-    climatology_bnds      = new((/  1,2 /), "integer")
-    climatology_bnds(0,0) = toint(min(time))
-    climatology_bnds(0,1) = toint(max(time))
+    climatology_bnds      = new((/  1,2 /), "double")
+    climatology_bnds(0,0) = todouble(min(time_bnds))
+    climatology_bnds(0,1) = todouble(max(time_bnds))
     climatology_bnds@long_name = "Climate Period Bounds"
     climatology_bnds@description = climatology_bnds@long_name
     climatology_bnds@standard_name = "time"
@@ -554,17 +553,10 @@ begin
     stdev_recharge&month = month
     stdev_surplus&month = month
 
-    print("writing " + out_file)
-
-    fout->mean_monthly_temperature          = mean_monthly_temperature
-    fout->mean_monthly_precipitation        = mean_monthly_precipitation
-    fout->mean_potential_evapotranspiration = mean_potential_evapotranspiration
-    fout->mean_evapotranspiration           = mean_evapotranspiration
-    fout->mean_storage                      = mean_storage
-    fout->mean_snowpack                     = mean_snowpack
-    fout->mean_deficit                      = mean_deficit
-    fout->mean_recharge                     = mean_recharge
-    fout->mean_surplus                      = mean_surplus
+    print("writing " + climatology_period)
+    print("        " + climatology_bnds)
+    print("        " + climatology_year_bnds)
+    print("        " + climatology_duration)
 
     fout->climatology_period = climatology_period
     fout->month = month
@@ -576,6 +568,18 @@ begin
     fout->lat_bnds = lat_bnds
     fout->climatology_year_bnds = climatology_year_bnds
     fout->climatology_duration = climatology_duration
+
+    fout->mean_monthly_temperature          = mean_monthly_temperature
+    fout->mean_monthly_precipitation        = mean_monthly_precipitation
+    fout->mean_potential_evapotranspiration = mean_potential_evapotranspiration
+    fout->mean_evapotranspiration           = mean_evapotranspiration
+    fout->mean_storage                      = mean_storage
+    fout->mean_snowpack                     = mean_snowpack
+    fout->mean_deficit                      = mean_deficit
+    fout->mean_recharge                     = mean_recharge
+    fout->mean_surplus                      = mean_surplus
+
+
 
     fout->stdev_monthly_temperature          = stdev_monthly_temperature
     fout->stdev_monthly_precipitation        = stdev_monthly_precipitation
@@ -589,15 +593,15 @@ begin
 
     delete(fout)
     delete(fin)
-    delete(mean_monthly_temperature!0)
-    delete(mean_monthly_precipitation!0)
-    delete(mean_potential_evapotranspiration!0)
-    delete(mean_evapotranspiration!0)
-    delete(mean_storage!0)
-    delete(mean_snowpack!0)
-    delete(mean_deficit!0)
-    delete(mean_recharge!0)
-    delete(mean_surplus!0)
+    delete(mean_monthly_temperature)
+    delete(mean_monthly_precipitation)
+    delete(mean_potential_evapotranspiration)
+    delete(mean_evapotranspiration)
+    delete(mean_storage)
+    delete(mean_snowpack)
+    delete(mean_deficit)
+    delete(mean_recharge)
+    delete(mean_surplus)
 
     delete(stdev_monthly_temperature)
     delete(stdev_monthly_precipitation)
@@ -611,6 +615,24 @@ begin
     delete(x)
     delete(y)
     delete(z)
+    delete(month)
+    delete(ensemble)
+    delete(scenario)
+    delete(lat)
+    delete(lon)
+    delete(lon_bnds)
+    delete(lat_bnds)
+    delete(time_bnds)
+    delete(time)
+    delete(climatology_year_bnds)
+    delete(climatology_duration)
+    delete(climatology_bnds)
+    delete(climatology_start_year)
+    delete(climatology_end_year)
+    delete(k)
+    delete(temp)
+    delete(index_hist)
+
 
      print("------------------")
   end do
