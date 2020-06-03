@@ -2,7 +2,7 @@
 
 
 begin
-  setfileoption("nc", "Format",  "NetCDF4Classic")
+  setfileoption("nc", "Format",  "NetCDF4")
 
   delta_t = 10
 
@@ -394,6 +394,8 @@ printVarSummary(mean_monthly_temperature)
 
       mean_surplus  := y
       stdev_surplus := z
+
+    print(out_file)
 
     fout->climatology_period = climatology_period
     fout->climatology_start_year = climatology_start_year
