@@ -2,6 +2,7 @@
 
 
 begin
+  setfileoption("nc", "Format",  "NetCDF4Classic")
 
   delta_t = 10
 
