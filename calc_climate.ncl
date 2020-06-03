@@ -283,7 +283,7 @@ begin
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
+        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_snowpack  := y
@@ -317,7 +317,7 @@ begin
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
+        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_deficit  := y
@@ -351,7 +351,7 @@ begin
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
+        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_recharge  := y
@@ -385,7 +385,7 @@ begin
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) := (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3 /)
+        z(k,:,:,:,:) := (/ round( dim_stddev_n(temp,0),3) /)
       end do
 
       mean_surplus  := y
