@@ -88,7 +88,6 @@ begin
 
       if (max(year) .le. 2005) then
         print("All Historical")
-        scenario = scenario(0:0)
         scenario(0) = (/ "Historical" /)
         print(scenario)
       else
@@ -102,16 +101,9 @@ begin
       x!0     = "month"
       x&month = month
       x&ensemble        := ensemble
+      x&scenario        := scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
-        printVarSummary(x)
-        print(scenario)
-        print(x&scenario)
-
-        delete(x&scenario)
-
-        
-        x&scenario        = scenario
       else
         if (min(year) .lt. 2005) then
           index_hist = ind((month .eq. 12) .and. (year .eq. 2005))
@@ -135,7 +127,7 @@ begin
 
       mean_monthly_temperature  := y
       stdev_monthly_temperature := z
-
+printVarSummary(mean_monthly_temperature)
 
     x := fin->total_precipitation
       x!0        := "month"
