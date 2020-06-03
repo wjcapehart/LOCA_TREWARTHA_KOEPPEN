@@ -71,8 +71,8 @@ begin
     time_bnds := fin->time_bnds
 
     climatology_bnds      = time_bnds(0:0,:)
-    climatology_bnds(0,0) = tofloat(min(time))
-    climatology_bnds(0,1) = tofloat(max(time))
+    climatology_bnds(0,0) = toshort(min(time))
+    climatology_bnds(0,1) = toshort(max(time))
 
     time_parts = cd_calendar(time, -5)
 
@@ -121,8 +121,8 @@ begin
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/ round(  dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
       end do
 
       mean_monthly_temperature  := y
@@ -153,8 +153,8 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/ round(  dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
       end do
 
       mean_monthly_precipitation  := y
@@ -186,8 +186,9 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/ round(  dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
+
       end do
 
       mean_potential_evapotranspiration  := y
@@ -219,8 +220,9 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/ round(  dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
+
       end do
 
       mean_evapotranspiration  := y
@@ -251,8 +253,9 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/  round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
+
       end do
 
       mean_storage  := y
@@ -284,8 +287,9 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
+
       end do
 
       mean_snowpack  := y
@@ -318,8 +322,9 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
+
       end do
 
       mean_deficit  := y
@@ -352,8 +357,9 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
+
       end do
 
       mean_recharge  := y
@@ -386,8 +392,9 @@ printVarSummary(mean_monthly_temperature)
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(ind(month .eq. k+1),:,:,:,:)
-        y(k,:,:,:,:) = (/ round( dim_avg_n(temp,0),3)   /)
-        z(k,:,:,:,:) = (/ round( dim_stddev_n(temp,0),3) /)
+        y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
+        z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
+
       end do
 
       mean_surplus  := y
