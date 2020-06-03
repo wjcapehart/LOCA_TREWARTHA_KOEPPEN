@@ -58,7 +58,7 @@ begin
 
 
     in_file    := "http://kyrill.ias.sdsmt.edu:8080/thredds/dodsC/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget/"+climatology_duration+"-yr/LOCAL_TREWARTHA_ALL_ENSEMBLES_"+climatology_period+".nc"
-    in_file    = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget/"+climatology_duration+"-yr/LOCAL_TREWARTHA_ALL_ENSEMBLES_"+climatology_period+".nc"
+    ;in_file    = "/maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornwaite_Budget/"+climatology_duration+"-yr/LOCAL_TREWARTHA_ALL_ENSEMBLES_"+climatology_period+".nc"
     out_file   := "./LOCAL_TREWARTHA_ALL_ENSEMBLES_CLIM_"+climatology_period+".nc"
 
 
