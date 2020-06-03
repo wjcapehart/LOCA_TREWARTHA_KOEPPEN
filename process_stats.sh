@@ -68,8 +68,7 @@ ncpdq --permut time,ensemble,scenario,lat,lon temp.nc temp2.nc
      FILES=./tw_*.nc
      for f in $FILES
      do
-       years=``$f | cut -c6-14`
-
+       years=`echo $f | cut -c6-14`
        echo "Processing $f file..."
-       echo mv -v $f ./LOCAL_TREWARTHA_ALL_ENSEMBLES_${years}.nc
+       mv -v $f ./LOCAL_TREWARTHA_ALL_ENSEMBLES_${years}.nc
      done
