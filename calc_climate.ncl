@@ -634,7 +634,7 @@ begin
     delete(out_file)
 
 
-     print("------------------")
+     print("-------------------")
   end do
 
   system("ncecat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+climatology_duration+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_????-????.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+climatology_duration+"-yr.nc"    )
