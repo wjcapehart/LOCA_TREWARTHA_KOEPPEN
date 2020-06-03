@@ -9,8 +9,8 @@ begin
 
   start_years := toshort(ispan(1950,2090,delta_t))
 
-;  delta_t := 30h
-;  start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
+  delta_t := 30h
+  start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
 
 
 
