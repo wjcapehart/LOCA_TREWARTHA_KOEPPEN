@@ -526,6 +526,27 @@ begin
     stdev_recharge!0 = "month"
     stdev_surplus!0 = "month"
 
+    mean_monthly_temperature&month = month
+    mean_monthly_precipitation&month = month
+    mean_potential_evapotranspiration&month = month
+    mean_evapotranspiration&month = month
+    mean_storage&month = month
+    mean_snowpack&month = month
+    mean_deficit&month = month
+    mean_recharge&month = month
+    mean_surplus&month = month
+
+    stdev_monthly_temperature&month = month
+    stdev_monthly_precipitation&month = month
+    stdev_potential_evapotranspiration&month = month
+    stdev_evapotranspiration&month = month
+    stdev_storage&month = month
+    stdev_snowpack&month = month
+    stdev_deficit&month = month
+    stdev_recharge&month = month
+    stdev_surplus&month = month
+
+    print("writing " + out_file)
 
     fout->mean_monthly_temperature          = mean_monthly_temperature
     fout->mean_monthly_precipitation        = mean_monthly_precipitation
@@ -560,7 +581,30 @@ begin
 
     delete(fout)
     delete(fin)
+    delete(mean_monthly_temperature!0)
+    delete(mean_monthly_precipitation!0)
+    delete(mean_potential_evapotranspiration!0)
+    delete(mean_evapotranspiration!0)
+    delete(mean_storage!0)
+    delete(mean_snowpack!0)
+    delete(mean_deficit!0)
+    delete(mean_recharge!0)
+    delete(mean_surplus!0)
 
+    delete(stdev_monthly_temperature)
+    delete(stdev_monthly_precipitation)
+    delete(stdev_potential_evapotranspiration)
+    delete(stdev_evapotranspiration)
+    delete(stdev_storage)
+    delete(stdev_snowpack)
+    delete(stdev_deficit)
+    delete(stdev_recharge)
+    delete(stdev_surplus)
+    delete(x)
+    delete(y)
+    delete(z)
+
+     print("------------------")
   end do
 
 end
