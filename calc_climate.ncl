@@ -100,8 +100,8 @@ begin
     x := fin->mean_temperature
       x!0     = "month"
       x&month = month
-      x&ensemble        := ensemble
-      x&scenario        := scenario
+      x&ensemble        = ensemble
+      x&scenario        = scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -130,10 +130,10 @@ begin
 printVarSummary(mean_monthly_temperature)
 
     x := fin->total_precipitation
-      x!0        := "month"
-      x&month    := month
-      x&ensemble := ensemble
-      x&scenario := scenario
+      x!0        = "month"
+      x&month    = month
+      x&ensemble = ensemble
+      x&scenario = scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -163,10 +163,10 @@ printVarSummary(mean_monthly_temperature)
 
 
     x := fin->potential_evapotranspiration
-      x!0        := "month"
-      x&month    := month
-      x&ensemble := ensemble
-      x&scenario        := scenario
+      x!0        = "month"
+      x&month    = month
+      x&ensemble = ensemble
+      x&scenario = scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -197,10 +197,10 @@ printVarSummary(mean_monthly_temperature)
 
 
     x := fin->evapotranspiration
-      x!0        := "month"
-      x&month    := month
-      x&ensemble := ensemble
-      x&scenario        := scenario
+      x!0        = "month"
+      x&month    = month
+      x&ensemble = ensemble
+      x&scenario = scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -230,10 +230,10 @@ printVarSummary(mean_monthly_temperature)
 
 
     x := fin->storage
-      x!0        := "month"
-      x&month    := month
-      x&ensemble := ensemble
-      x&scenario        := scenario
+      x!0        = "month"
+      x&month    = month
+      x&ensemble = ensemble
+      x&scenario = scenario
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
       else
@@ -263,10 +263,10 @@ printVarSummary(mean_monthly_temperature)
 
 
     x := fin->snowpack
-      x!0        := "month"
-      x&month    := month
-      x&ensemble := ensemble
-      x&scenario        := scenario
+      x!0        = "month"
+      x&month    = month
+      x&ensemble = ensemble
+      x&scenario = scenario
 
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
@@ -298,10 +298,10 @@ printVarSummary(mean_monthly_temperature)
 
 
     x := fin->deficit
-      x!0        := "month"
-      x&month    := month
-      x&ensemble := ensemble
-      x&scenario        := scenario
+      x!0        = "month"
+      x&month    = month
+      x&ensemble = ensemble
+      x&scenario = scenario
 
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
@@ -333,10 +333,10 @@ printVarSummary(mean_monthly_temperature)
 
 
     x := fin->recharge
-      x!0        := "month"
-      x&month    := month
-      x&ensemble := ensemble
-      x&scenario        := scenario
+      x!0         = "month"
+      x&month     = month
+      x&ensemble  = ensemble
+      x&scenario  = scenario
 
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
@@ -368,10 +368,10 @@ printVarSummary(mean_monthly_temperature)
 
 
     x := fin->surplus
-      x!0        := "month"
-      x&month    := month
-      x&ensemble := ensemble
-      x&scenario        := scenario
+      x!0        = "month"
+      x&month    = month
+      x&ensemble = ensemble
+      x&scenario = scenario
 
       if (max(year) .le. 2005) then
         x := x(:,:,0:0,:,:)
