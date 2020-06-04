@@ -384,9 +384,9 @@ begin
 
 
 
-    x := fin->snowpack
+    x := fin->deficit
       x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarAtts(fin->snowpack, x)
+      copy_VarAtts(fin->deficit, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -598,7 +598,7 @@ begin
 
     fout->climatology_period = climatology_period
 
-    system("ncks -O -h climatology_period " +out_file + " deleteme.nc")
+    system("ncks -h --mk_rec_dmn  climatology_period " +out_file + " deleteme.nc")
     system("mv deleteme.nc " + out_file   )
 
     fout := addfile(out_file,"w")
