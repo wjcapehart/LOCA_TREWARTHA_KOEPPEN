@@ -270,7 +270,7 @@ begin
 
     X := fin->evapotranspiration
       x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarAtts(fin->potential_evapotranspiration, x)
+      copy_VarAtts(fin->evapotranspiration, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -598,7 +598,9 @@ begin
 
     fout->climatology_period = climatology_period
 
-    system("ncks -h --mk_rec_dmn  climatology_period " +out_file + " deleteme.nc")
+    print("ncks -h --mk_rec_dmn climatology_period " +out_file + " deleteme.nc")
+    system("ncks -h --mk_rec_dmn climatology_period " +out_file + " deleteme.nc")
+    print("mv deleteme.nc " + out_file   )
     system("mv deleteme.nc " + out_file   )
 
     fout := addfile(out_file,"w")
