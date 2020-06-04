@@ -11,6 +11,7 @@ begin
 
   delta_t := 30h
   start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
+  start_years := (/ 1950h, 1970h /)
 
 
 
@@ -101,6 +102,12 @@ begin
     lon_bnds  := fin->lon_bnds
     time_bnds := fin->time_bnds
 
+    nx = dimsizes(lon)
+    ny = dimsizes(lat)
+    nt = dimsizes(time)
+    ne = dimsizes(ensembles)
+    ns = dimsizes(scenarios)
+
     climatology_bnds      = new((/  1,2 /), "double")
     climatology_bnds(0,0) = todouble(min(time_bnds))
     climatology_bnds(0,1) = todouble(max(time_bnds))
@@ -165,11 +172,21 @@ begin
 
 
     x := fin->mean_temperature
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->mean_temperature, x)
       print(x@long_name)
-      x!0     = "month"
-      x&month = month
-      x&ensemble        = ensemble
-      x&scenario        = scenario
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -177,7 +194,6 @@ begin
           x(:index_hist,:,1,:,:) = x(:index_hist,:,0,:,:)
         end if
       end if
-
       y := x(0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + y@long_name
         y@description  := y@long_name
@@ -196,11 +212,21 @@ begin
       stdev_monthly_temperature := z
 
     x := fin->total_precipitation
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->total_precipitation, x)
       print(x@long_name)
-      x!0        = "month"
-      x&month    = month
-      x&ensemble = ensemble
-      x&scenario = scenario
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -228,11 +254,21 @@ begin
 
 
     x := fin->potential_evapotranspiration
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->potential_evapotranspiration, x)
       print(x@long_name)
-      x!0        = "month"
-      x&month    = month
-      x&ensemble = ensemble
-      x&scenario = scenario
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -252,7 +288,6 @@ begin
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
         z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
-
       end do
 
       mean_potential_evapotranspiration  := y
@@ -261,11 +296,21 @@ begin
 
 
     x := fin->evapotranspiration
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->evapotranspiration, x)
       print(x@long_name)
-      x!0        = "month"
-      x&month    = month
-      x&ensemble = ensemble
-      x&scenario = scenario
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -285,7 +330,6 @@ begin
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
         z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
-
       end do
 
       mean_evapotranspiration  := y
@@ -293,12 +337,21 @@ begin
 
 
     x := fin->storage
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->storage, x)
       print(x@long_name)
-
-      x!0        = "month"
-      x&month    = month
-      x&ensemble = ensemble
-      x&scenario = scenario
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -318,7 +371,6 @@ begin
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
         z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
-
       end do
 
       mean_storage  := y
@@ -326,13 +378,21 @@ begin
 
 
     x := fin->snowpack
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->snowpack, x)
       print(x@long_name)
-
-      x!0        = "month"
-      x&month    = month
-      x&ensemble = ensemble
-      x&scenario = scenario
-
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -352,7 +412,6 @@ begin
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
         z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
-
       end do
 
       mean_snowpack  := y
@@ -361,12 +420,21 @@ begin
 
 
     x := fin->deficit
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->deficit, x)
       print(x@long_name)
-      x!0        = "month"
-      x&month    = month
-      x&ensemble = ensemble
-      x&scenario = scenario
-
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -386,21 +454,28 @@ begin
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
         z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
-
       end do
-
       mean_deficit  := y
       stdev_deficit := z
 
 
 
     x := fin->recharge
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->recharge, x)
       print(x@long_name)
-      x!0         = "month"
-      x&month     = month
-      x&ensemble  = ensemble
-      x&scenario  = scenario
-
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -420,7 +495,6 @@ begin
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
         z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
-
       end do
 
       mean_recharge  := y
@@ -429,12 +503,21 @@ begin
 
 
     x := fin->surplus
+      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarMeta(fin->surplus, x)
       print(x@long_name)
-      x!0        = "month"
-      x&month    = month
-      x&ensemble = ensemble
-      x&scenario = scenario
-
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
       if (max(year) .le. 2005) then
       else
         if (min(year) .lt. 2005) then
@@ -454,7 +537,6 @@ begin
         temp         := x(ind(month .eq. k+1),:,:,:,:)
         y(k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,0),3)) /)
         z(k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,0),3)) /)
-
       end do
 
       mean_surplus  := y
@@ -490,45 +572,45 @@ begin
         delete(stdev_recharge&month)
         delete(stdev_surplus&month)
 
-    delete(mean_monthly_temperature!0)
-    delete(mean_monthly_precipitation!0)
-    delete(mean_potential_evapotranspiration!0)
-    delete(mean_evapotranspiration!0)
-    delete(mean_storage!0)
-    delete(mean_snowpack!0)
-    delete(mean_deficit!0)
-    delete(mean_recharge!0)
-    delete(mean_surplus!0)
+    delete(mean_monthly_temperature!1)
+    delete(mean_monthly_precipitation!1)
+    delete(mean_potential_evapotranspiration!1)
+    delete(mean_evapotranspiration!1)
+    delete(mean_storage!1)
+    delete(mean_snowpack!1)
+    delete(mean_deficit!1)
+    delete(mean_recharge!1)
+    delete(mean_surplus!1)
 
-    delete(stdev_monthly_temperature!0)
-    delete(stdev_monthly_precipitation!0)
-    delete(stdev_potential_evapotranspiration!0)
-    delete(stdev_evapotranspiration!0)
-    delete(stdev_storage!0)
-    delete(stdev_snowpack!0)
-    delete(stdev_deficit!0)
-    delete(stdev_recharge!0)
-    delete(stdev_surplus!0)
+    delete(stdev_monthly_temperature!1)
+    delete(stdev_monthly_precipitation!1)
+    delete(stdev_potential_evapotranspiration!1)
+    delete(stdev_evapotranspiration!1)
+    delete(stdev_storage!1)
+    delete(stdev_snowpack!1)
+    delete(stdev_deficit!1)
+    delete(stdev_recharge!1)
+    delete(stdev_surplus!1)
 
-    mean_monthly_temperature!0 = "month"
-    mean_monthly_precipitation!0 = "month"
-    mean_potential_evapotranspiration!0 = "month"
-    mean_evapotranspiration!0 = "month"
-    mean_storage!0 = "month"
-    mean_snowpack!0 = "month"
-    mean_deficit!0 = "month"
-    mean_recharge!0 = "month"
-    mean_surplus!0 = "month"
+    mean_monthly_temperature!1 = "month"
+    mean_monthly_precipitation!1 = "month"
+    mean_potential_evapotranspiration!1 = "month"
+    mean_evapotranspiration!1 = "month"
+    mean_storage!1 = "month"
+    mean_snowpack!1 = "month"
+    mean_deficit!1 = "month"
+    mean_recharge!1 = "month"
+    mean_surplus!1 = "month"
 
-    stdev_monthly_temperature!0 = "month"
-    stdev_monthly_precipitation!0 = "month"
-    stdev_potential_evapotranspiration!0 = "month"
-    stdev_evapotranspiration!0 = "month"
-    stdev_storage!0 = "month"
-    stdev_snowpack!0 = "month"
-    stdev_deficit!0 = "month"
-    stdev_recharge!0 = "month"
-    stdev_surplus!0 = "month"
+    stdev_monthly_temperature!1 = "month"
+    stdev_monthly_precipitation!1 = "month"
+    stdev_potential_evapotranspiration!1 = "month"
+    stdev_evapotranspiration!1 = "month"
+    stdev_storage!1 = "month"
+    stdev_snowpack!1 = "month"
+    stdev_deficit!1 = "month"
+    stdev_recharge!1 = "month"
+    stdev_surplus!1 = "month"
 
     mean_monthly_temperature&month = month
     mean_monthly_precipitation&month = month
