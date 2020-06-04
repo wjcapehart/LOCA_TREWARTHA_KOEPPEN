@@ -597,6 +597,8 @@ begin
     fout := addfile(out_file,"c")
 
     fout->climatology_period = climatology_period
+    
+    delete(fout)
 
     print("ncks -h --mk_rec_dmn climatology_period " +out_file + " deleteme.nc")
     system("ncks -h --mk_rec_dmn climatology_period " +out_file + " deleteme.nc")
@@ -605,7 +607,6 @@ begin
 
     fout := addfile(out_file,"w")
 
-    delete(fout)
 
     fout->month                 = month
     fout->ensemble              = ensemble
