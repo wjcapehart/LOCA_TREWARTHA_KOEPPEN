@@ -11,9 +11,8 @@ begin
 
   start_years := toshort(ispan(1950,2090,delta_t))
 
-  delta_t := 30h
-  start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
-  start_years := (/ 1950h, 1970h /)
+;  delta_t := 30h
+;  start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
 
 
 
@@ -590,8 +589,8 @@ begin
     stdev_surplus&month                      = month
 
     print("writing period " + climatology_period)
-    print("   time bounds " + climatology_bnds(0,0)      + "to" + climatology_bnds(0,1) )
-    print("   year bounds " + climatology_year_bnds(0,0) + "to" + climatology_year_bnds(0,1) )
+    print("   time bounds " + climatology_bnds(0,0)      + " to " + climatology_bnds(0,1) )
+    print("   year bounds " + climatology_year_bnds(0,0) + " to " + climatology_year_bnds(0,1) )
     print(" period length " + climatology_duration)
 
     fout := addfile(out_file,"c")
