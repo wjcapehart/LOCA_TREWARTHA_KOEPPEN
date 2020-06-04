@@ -590,8 +590,8 @@ begin
     stdev_surplus&month                      = month
 
     print("writing period " + climatology_period)
-    print("    timebounds " + climatology_bnds)
-    print("    yearbounds " + climatology_year_bnds)
+    print("   time bounds " + climatology_bnds(0,0)      + "to" + climatology_bnds(0,1) )
+    print("   year bounds " + climatology_year_bnds(0,0) + "to" + climatology_year_bnds(0,1) )
     print(" period length " + climatology_duration)
 
     fout := addfile(out_file,"c")
@@ -693,8 +693,8 @@ begin
   end do
 
   system("rm -vf /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"   )
-  print("ncrcat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
+  print("ncrcat  /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
 
-  system("ncrcat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
+  system("ncrcat /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
 
 end
