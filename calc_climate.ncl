@@ -597,7 +597,7 @@ begin
     fout := addfile(out_file,"c")
 
     fout->climatology_period = climatology_period
-    
+
     delete(fout)
 
     print("ncks -h --mk_rec_dmn climatology_period " +out_file + " deleteme.nc")
@@ -692,8 +692,9 @@ begin
      print("-------------------")
   end do
 
-  print("ncecat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
+  system("rm -vf /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"   )
+  print("ncrcat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
 
-  system("ncecat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
+  system("ncrcat -u climatology_period /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/"+delta_t+"-yr/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_*-*.nc   /maelstrom2/LOCA_GRIDDED_ENSEMBLES/LOCA_NGP/Specific_Regional_Aggregate_Sets/cheyenne_basin/DERIVED/Thornthwaite_Budgets/LOCA_THORNTHWAITE_ALL_ENSEMBLES_CLIM_"+delta_t+"-yr.nc"    )
 
 end
