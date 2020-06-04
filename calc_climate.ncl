@@ -1,6 +1,8 @@
 
 
 
+
+
 begin
   setfileoption("nc", "Format",  "NetCDF4")
   setfileoption("nc", "CompressionLevel", 8)
@@ -150,9 +152,9 @@ begin
       month@comment            = "calendar month LUT indexing starts at 0, 0=January, 11=December"
 
 
-    x := fin->mean_temperature
-      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarMeta(fin->mean_temperature, x)
+    X := fin->mean_temperature
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->mean_temperature, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -187,9 +189,9 @@ begin
       mean_monthly_temperature  := y
       stdev_monthly_temperature := z
 
-    x := fin->total_precipitation
-      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarMeta(fin->total_precipitation, x)
+    X := fin->total_precipitation
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->total_precipitation, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -226,9 +228,9 @@ begin
 
 
 
-    x := fin->potential_evapotranspiration
-      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarMeta(fin->potential_evapotranspiration, x)
+    X := fin->potential_evapotranspiration
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->potential_evapotranspiration, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -266,9 +268,9 @@ begin
 
 
 
-    x := fin->evapotranspiration
-      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarMeta(fin->evapotranspiration, x)
+    X := fin->evapotranspiration
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->potential_evapotranspiration, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -305,9 +307,9 @@ begin
       stdev_evapotranspiration := z
 
 
-    x := fin->storage
-      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarMeta(fin->storage, x)
+    X := fin->storage
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->storage, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -343,9 +345,9 @@ begin
       stdev_storage := z
 
 
-    x := fin->snowpack
-      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarMeta(fin->snowpack, x)
+    X := fin->snowpack
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->snowpack, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -382,9 +384,9 @@ begin
 
 
 
-    x := fin->deficit
-      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarMeta(fin->deficit, x)
+    x := fin->snowpack
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->snowpack, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -421,9 +423,9 @@ begin
 
 
 
-    x := fin->recharge
-      x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-      copy_VarMeta(fin->recharge, x)
+    X := fin->recharge
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->recharge, x)
       print(x@long_name)
       x!0     = "climatology_period"
       x!1     = "month"
@@ -460,39 +462,39 @@ begin
 
 
 
-    x := fin->surplus
-        x = reshape(x, (/ 1, nt, ne, ns, ny, nx  /))
-        copy_VarMeta(fin->surplus, x)
-        print(x@long_name)
-        x!0     = "climatology_period"
-        x!1     = "month"
-        x!2     = "ensemble"
-        x!3     = "scenario"
-        x!4     = "lat"
-        x!5     = "lon"
-        x&climatology_period = climatology_period
-        x&month              = month
-        x&ensemble           = ensemble
-        x&scenario           = scenario
-        x&lat                = lat
-        x&lon                = lon
-          if ((min(year) .lt. 2005) .and. (max(year) .gt. 2005)) then
-            index_hist = ind((month .eq. 12) .and. (year .eq. 2005))
-            x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
-          end if
-        y := x(:,0:11,:,:,:,:)
-          y@long_name    := "Mean Monthly " + y@long_name
-          y@description  := y@long_name
-          y@cell_methods := "time : monthly mean"
-        z := x(:,0:11,:,:,:,:)
-          z@long_name    := "StDev Monthly " + y@long_name
-          z@description  := y@long_name
-          z@cell_methods := "time : monthly standard deviation"
-        do k = 0,11
-          temp         := x(:,ind(month .eq. k+1),:,:,:,:)
-          y(:,k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,1),3)) /)
-          z(:,k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,1),3)) /)
-        end do
+    X := fin->surplus
+      x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
+      copy_VarAtts(fin->surplus, x)
+      print(x@long_name)
+      x!0     = "climatology_period"
+      x!1     = "month"
+      x!2     = "ensemble"
+      x!3     = "scenario"
+      x!4     = "lat"
+      x!5     = "lon"
+      x&climatology_period = climatology_period
+      x&month              = month
+      x&ensemble           = ensemble
+      x&scenario           = scenario
+      x&lat                = lat
+      x&lon                = lon
+        if ((min(year) .lt. 2005) .and. (max(year) .gt. 2005)) then
+          index_hist = ind((month .eq. 12) .and. (year .eq. 2005))
+          x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
+        end if
+      y := x(:,0:11,:,:,:,:)
+        y@long_name    := "Mean Monthly " + y@long_name
+        y@description  := y@long_name
+        y@cell_methods := "time : monthly mean"
+      z := x(:,0:11,:,:,:,:)
+        z@long_name    := "StDev Monthly " + y@long_name
+        z@description  := y@long_name
+        z@cell_methods := "time : monthly standard deviation"
+      do k = 0,11
+        temp         := x(:,ind(month .eq. k+1),:,:,:,:)
+        y(:,k,:,:,:,:) = (/ toshort(round(    dim_avg_n(temp,1),3)) /)
+        z(:,k,:,:,:,:) = (/ toshort(round( dim_stddev_n(temp,1),3)) /)
+      end do
 
       mean_surplus  := y
       stdev_surplus := z
@@ -659,6 +661,7 @@ begin
     delete(stdev_deficit)
     delete(stdev_recharge)
     delete(stdev_surplus)
+    delete(X)
     delete(x)
     delete(y)
     delete(z)
