@@ -39,3 +39,5 @@ rsconnect/
 *.txt
 *.pdf
 *.tmp
+local_short_timeseries
+local_climatologies
