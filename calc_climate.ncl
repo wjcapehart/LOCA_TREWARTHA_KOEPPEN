@@ -8,8 +8,7 @@ begin
   setfileoption("nc", "CompressionLevel", 8)
 
   delta_t = 10h
-
-  start_years := toshort(ispan(1950,2090,delta_t))
+    start_years := toshort(ispan(1950,2090,delta_t))
 
  delta_t := 30h
   start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
@@ -172,12 +171,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
@@ -209,12 +208,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
@@ -248,12 +247,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
@@ -288,12 +287,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
@@ -327,12 +326,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
@@ -365,12 +364,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
@@ -404,12 +403,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
@@ -443,12 +442,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
@@ -482,12 +481,12 @@ begin
           x(:,:index_hist,:,1,:,:) = x(:,:index_hist,:,0,:,:)
         end if
       y := x(:,0:11,:,:,:,:)
-        y@long_name    := "Mean Monthly " + y@long_name
+        y@long_name    := "Mean Monthly " + X@long_name
         y@description  := y@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
-        z@long_name    := "StDev Monthly " + y@long_name
-        z@description  := y@long_name
+        z@long_name    := "StDev Monthly " + X@long_name
+        z@description  := z@long_name
         z@cell_methods := "time : monthly standard deviation"
       do k = 0,11
         temp         := x(:,ind(month .eq. k+1),:,:,:,:)
