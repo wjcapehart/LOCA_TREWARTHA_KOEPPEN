@@ -83,7 +83,7 @@ ensembles = c( "ACCESS1-0_r1i1p1",
                "NorESM1-M_r1i1p1",
                "bcc-csm1-1-m_r1i1p1" )
 
-#ensembles = (               "MIROC-ESM-CHEM_r1i1p1")
+ensembles = (               "MIROC-ESM-CHEM_r1i1p1")
 #
 ###############################################################
 
