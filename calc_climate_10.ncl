@@ -382,7 +382,7 @@ begin
 
 
 
-    x := fin->deficit
+    X := fin->deficit
       x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
       copy_VarAtts(fin->deficit, x)
       print(x@long_name)
@@ -404,7 +404,7 @@ begin
         end if
       y := x(:,0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + X@long_name
-        y@description  := y@long_name
+        y@description  := X@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
         z@long_name    := "StDev Monthly " + X@long_name

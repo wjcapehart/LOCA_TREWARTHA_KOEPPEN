@@ -7,11 +7,11 @@ begin
   setfileoption("nc", "Format",  "NetCDF4")
   setfileoption("nc", "CompressionLevel", 8)
 
-;  delta_t = 10h
-;    start_years := toshort(ispan(1950,2090,delta_t))
+  delta_t = 10h
+    start_years := toshort(ispan(1950,2090,delta_t))
 
- delta_t := 30h
-  start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
+delta_t := 30h
+ start_years := (/ 1950h, 1970h, 1976h, 2000h, 2011h, 2036h, 2061h, 2070h /)
 
 
 
@@ -382,7 +382,7 @@ begin
 
 
 
-    x := fin->deficit
+    X := fin->deficit
       x := reshape(X, (/ 1, nt, ne, ns, ny, nx  /))
       copy_VarAtts(fin->deficit, x)
       print(x@long_name)
@@ -404,7 +404,7 @@ begin
         end if
       y := x(:,0:11,:,:,:,:)
         y@long_name    := "Mean Monthly " + X@long_name
-        y@description  := y@long_name
+        y@description  := X@long_name
         y@cell_methods := "time : monthly mean"
       z := x(:,0:11,:,:,:,:)
         z@long_name    := "StDev Monthly " + X@long_name
