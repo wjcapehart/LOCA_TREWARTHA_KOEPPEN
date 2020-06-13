@@ -1091,7 +1091,7 @@ URL_Name = str_c(AWC_MAP,
 
 
 
-            { #  RCP 45 Load Thorntwaite Direct Water Budget Fields into their Variables
+            { #  RCP 45 Load Thornthwaite Direct Water Budget Fields into their Variables
               scen_k = 1
 
               temperature[          lon_i,lat_j,scen_k,,1] = time_series_45$Tm
@@ -1101,9 +1101,9 @@ URL_Name = str_c(AWC_MAP,
               deficit[              lon_i,lat_j,scen_k,,1] = as.vector(as.matrix(thornthwaite_45$W_balance$Deficit))
               surplus[              lon_i,lat_j,scen_k,,1] = as.vector(as.matrix(thornthwaite_45$W_balance$Surplus))
 
-            } # RCP 45 Load Thorntwaite Direct Water Budget Fields into their Variables
+            } # RCP 45 Load Thornthwaite Direct Water Budget Fields into their Variables
 
-            { #  RCP 85 Load Thorntwaite Direct Water Budget Fields into their Variables
+            { #  RCP 85 Load Thornthwaite Direct Water Budget Fields into their Variables
                scen_k = 2
 
               temperature[          lon_i,lat_j,scen_k,,1] = time_series_85$Tm
@@ -1113,7 +1113,7 @@ URL_Name = str_c(AWC_MAP,
               deficit[              lon_i,lat_j,scen_k,,1] = as.vector(as.matrix(thornthwaite_85$W_balance$Deficit))
               surplus[              lon_i,lat_j,scen_k,,1] = as.vector(as.matrix(thornthwaite_85$W_balance$Surplus))
 
-            } # RCP 85 Load Thorntwaite Direct Water Budget Fields into their Variables
+            } # RCP 85 Load Thornthwaite Direct Water Budget Fields into their Variables
 
           } # Calculate Water Budgtet
 
@@ -1126,7 +1126,7 @@ URL_Name = str_c(AWC_MAP,
 
       } # latitude
 
-      { # Load Thorntwaite Direct Water Budget Fields into their Variables
+      { # Load Thornthwaite Direct Water Budget Fields into their Variables
 
             evaporation = potential_evaporation - deficit
 
@@ -1138,7 +1138,7 @@ URL_Name = str_c(AWC_MAP,
 
             snowpack[snowpack<0] = 0
 
-          } # Load Thorntwaite Direct Water Budget Fields into their Variables
+      } # Load Thornthwaite Direct Water Budget Fields into their Variables
 
 
     } # Spatially Stroll Through Map
@@ -1753,7 +1753,7 @@ URL_Name = str_c(AWC_MAP,
         ncatt_put(nc         = nc_bud,
                   varid      = netcdf_snowpack,
                   attname    = "add_offset",
-                  attval     = "Mean Monthly Snowpack",
+                  attval     = 0.0,
                   prec       = NA,
                   verbose    = FALSE,
                   definemode = FALSE )
